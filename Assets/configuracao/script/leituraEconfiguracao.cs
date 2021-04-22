@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class leituraEconfiguracao : MonoBehaviour {
-	public GUIText entradaTotal, saidaTotal, porcentagem, previsao, contabilidade;
-	public GUIText[] acum1 = new GUIText[4];
-	public GUIText[] acum2 = new GUIText[4];
+	public Text entradaTotal, saidaTotal, porcentagem, previsao, contabilidade;
+	public Text[] acum1 = new Text[4];
+	public Text[] acum2 = new Text[4];
 	bool[] senha = new bool[6];
 	int cont;
 	string pass = null;
@@ -76,12 +77,14 @@ public class leituraEconfiguracao : MonoBehaviour {
 
 			if(Input.GetKeyDown(KeyCode.G) || entrarSenha){
 				entrarSenha = true;
+				
+				print("Aqui");
 
 				if(Input.GetKeyDown(KeyCode.Y)){
 					cont++;
 					pass += "1";
 				}
-				if(Input.GetButtonDown("J")){
+				if(Input.GetKeyDown(KeyCode.J)){
 					cont++;
 					pass += "2";
 				}
@@ -154,24 +157,24 @@ public class leituraEconfiguracao : MonoBehaviour {
 			if(valor > 100) valor = 1;
 			if(cont > 11) cont = 0;
 			contabilidade.text ="A variação está em: " + valor;
-			acum1[0].guiText.color = Color.white;
-			acum2[0].guiText.color = Color.white;
-			acum1[1].guiText.color = Color.white;
-			acum2[1].guiText.color = Color.white;
-			acum1[2].guiText.color = Color.white;
-			acum2[2].guiText.color = Color.white;
-			acum1[3].guiText.color = Color.white;
-			acum2[3].guiText.color = Color.white;
-			entradaTotal.guiText.color = Color.white;
-			porcentagem.guiText.color = Color.white;
-			previsao.guiText.color = Color.white;
-			saidaTotal.guiText.color = Color.white;
+			contabilidade.color = Color.white;
+			acum2[0].color = Color.white;
+			acum1[1].color = Color.white;
+			acum2[1].color = Color.white;
+			acum1[2].color = Color.white;
+			acum2[2].color = Color.white;
+			acum1[3].color = Color.white;
+			acum2[3].color = Color.white;
+			entradaTotal.color = Color.white;
+			porcentagem.color = Color.white;
+			previsao.color = Color.white;
+			saidaTotal.color = Color.white;
 
 			if(Input.GetKeyDown(KeyCode.Y))	cont++;
 			if(Input.GetKeyDown(KeyCode.B))	Application.LoadLevel("configuracao");
 			//ACUMULADO MAXIMO ABOBORAS 1
 			if(cont == 0){
-				acum1[0].guiText.color = Color.red;
+				acum1[0].color = Color.red;
 				//ZERA
 				if(Input.GetKeyDown(KeyCode.J)){
 					bancoDados.ConfiguraAcumuladoM1 = 0;
@@ -194,7 +197,7 @@ public class leituraEconfiguracao : MonoBehaviour {
 			}
 			//ACUMULADO MINIMO ABOBORAS 1
 			if(cont == 1){
-				acum1[1].guiText.color = Color.red;
+				acum1[1].color = Color.red;
 				//ZERA
 				if(Input.GetKeyDown(KeyCode.J)){
 					bancoDados.ConfiguraAcumuladoM1 = 0;
@@ -217,7 +220,7 @@ public class leituraEconfiguracao : MonoBehaviour {
 			}
 			//ACUMULADO PORCETAGEM ABOBORA
 			if(cont == 2){
-				acum1[2].guiText.color = Color.red;
+				acum1[2].color = Color.red;
 				//ZERA
 				if(Input.GetKeyDown(KeyCode.J)){
 					bancoDados.ConfiguraAcumuladoM1 = 0;
@@ -240,7 +243,7 @@ public class leituraEconfiguracao : MonoBehaviour {
 			}
 			//ACUMULADO ATUAL ABOBORA
 			if(cont == 3){
-				acum1[3].guiText.color = Color.red;
+				acum1[3].color = Color.red;
 				//ZERA
 				if(Input.GetKeyDown(KeyCode.J)){
 					bancoDados.ConfiguraAcumuladoM1 = 0;
@@ -264,7 +267,7 @@ public class leituraEconfiguracao : MonoBehaviour {
 		
 			//ACUMULADO MAXIMO ABOBORAS 2
 			if(cont == 4){
-				acum2[0].guiText.color = Color.red;
+				acum2[0].color = Color.red;
 				//ZERA
 				if(Input.GetKeyDown(KeyCode.J)){
 					bancoDados.ConfiguraAcumuladoM1 = 0;
@@ -287,7 +290,7 @@ public class leituraEconfiguracao : MonoBehaviour {
 			}
 			//ACUMULADO MINIMO ABOBORAS 1
 			if(cont == 5){
-				acum2[1].guiText.color = Color.red;
+				acum2[1].color = Color.red;
 				//ZERA
 				if(Input.GetKeyDown(KeyCode.J)){
 					bancoDados.ConfiguraAcumuladoM1 = 0;
@@ -310,7 +313,7 @@ public class leituraEconfiguracao : MonoBehaviour {
 			}
 			//ACUMULADO PORCETAGEM ABOBORA
 			if(cont == 6){
-				acum2[2].guiText.color = Color.red;
+				acum2[2].color = Color.red;
 				//ZERA
 				if(Input.GetKeyDown(KeyCode.J)){
 					bancoDados.ConfiguraAcumuladoM1 = 0;
@@ -333,7 +336,7 @@ public class leituraEconfiguracao : MonoBehaviour {
 			}
 			//ACUMULADO ATUAL ABOBORA
 			if(cont == 7){
-				acum2[3].guiText.color = Color.red;
+				acum2[3].color = Color.red;
 				//ZERA
 				if(Input.GetKeyDown(KeyCode.J)){
 					bancoDados.ConfiguraAcumuladoM1 = 0;
@@ -357,7 +360,7 @@ public class leituraEconfiguracao : MonoBehaviour {
 
 			//pulso
 			if(cont == 8){
-				porcentagem.guiText.color = Color.red;
+				porcentagem.color = Color.red;
 				//ZERA
 				if(Input.GetKeyDown(KeyCode.J)){
 					bancoDados.pulso = 0;
@@ -380,7 +383,7 @@ public class leituraEconfiguracao : MonoBehaviour {
 			}
 			//retencao
 			if(cont == 9){
-				previsao.guiText.color = Color.red;
+				previsao.color = Color.red;
 				//ZERA
 				if(Input.GetKeyDown(KeyCode.J)){
 					bancoDados.porcentagemCasa = 0;
@@ -403,7 +406,7 @@ public class leituraEconfiguracao : MonoBehaviour {
 			}
 			//entrada
 			if(cont == 10){
-				entradaTotal.guiText.color = Color.red;
+				entradaTotal.color = Color.red;
 				//ZERA
 				if(Input.GetKeyDown(KeyCode.J)){
 					bancoDados.pulso = 0;
@@ -436,7 +439,7 @@ public class leituraEconfiguracao : MonoBehaviour {
 		if(Application.loadedLevelName == "testeInput"){
 			if(Input.GetKeyDown(KeyCode.B)){
 				if(valor > 1){
-					acum2[3].guiText.enabled = false;
+					acum2[3].enabled = false;
 					acum2[2].text = "R$ 0";
 					valor = 1;
 				}
@@ -445,42 +448,42 @@ public class leituraEconfiguracao : MonoBehaviour {
 				}
 			}
 			if(Input.GetKey(KeyCode.Y)){
-				entradaTotal.guiText.color = Color.red;
+				entradaTotal.color = Color.red;
 			}
 			if(Input.GetKey(KeyCode.J)){
-				saidaTotal.guiText.color = Color.red;
+				saidaTotal.color = Color.red;
 			}
 			if(Input.GetKey(KeyCode.H)){
-				porcentagem.guiText.color = Color.red;
+				porcentagem.color = Color.red;
 			}
 			if(Input.GetKey(KeyCode.M)){
-				previsao.guiText.color = Color.red;
+				previsao.color = Color.red;
 			}
 			if(Input.GetKey(KeyCode.N)){
-				contabilidade.guiText.color = Color.red;
+				contabilidade.color = Color.red;
 			}
 			if(Input.GetKey(KeyCode.F)){
-				acum1[0].guiText.color = Color.red;
+				acum1[0].color = Color.red;
 			}
 			if(Input.GetKey(KeyCode.T)){
-				acum1[1].guiText.color = Color.red;
+				acum1[1].color = Color.red;
 			}
 			if(Input.GetKey(KeyCode.V)){
-				acum1[2].guiText.color = Color.red;
+				acum1[2].color = Color.red;
 			}
 			if(Input.GetKey(KeyCode.G)){
-				acum1[3].guiText.color = Color.red;
+				acum1[3].color = Color.red;
 			}
 			if(Input.GetKey(KeyCode.R)){
-				acum2[0].guiText.color = Color.red;
+				acum2[0].color = Color.red;
 			}
-			if(Input.GetButton("quatro") || Input.GetKey(KeyCode.Keypad4)){
-				acum2[1].guiText.color = Color.red;
+			if(Input.GetKey(KeyCode.Keypad4)){
+				acum2[1].color = Color.red;
 			}
 			if(Input.GetKeyDown(KeyCode.P)){
 				acum2[2].text = "R$ " + valor;
 				valor++;
-				acum2[3].guiText.enabled = true;
+				acum2[3].enabled = true;
 			}
 
 		}
